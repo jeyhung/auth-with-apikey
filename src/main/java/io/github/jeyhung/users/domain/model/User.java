@@ -1,6 +1,7 @@
 package io.github.jeyhung.users.domain.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,6 +9,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
+@Builder
 @Entity
 @Table(name = "users")
 @AllArgsConstructor
@@ -23,7 +25,7 @@ public class User {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "api_key", nullable = false)
+    @Column(name = "api_key", nullable = false, unique = true)
     private String apikey;
 
     @Column(name = "creation_at", nullable = false, updatable = false)
